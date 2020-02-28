@@ -2,11 +2,14 @@ package com.example.workshopmongo.domain;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.example.workshopmongo.dto.AuthorDTO;
+import com.example.workshopmongo.dto.CommentDTO;
 
 @Document(collection = "post")
 public class Post implements Serializable{
@@ -18,6 +21,8 @@ public class Post implements Serializable{
 	private String title;
 	private String body;
 	private AuthorDTO author;
+	
+	private Set<CommentDTO> comment = new HashSet<>();
 	
 	public Post() {
 	}
@@ -69,6 +74,14 @@ public class Post implements Serializable{
 
 	public void setAuthor(AuthorDTO author) {
 		this.author = author;
+	}
+
+	public Set<CommentDTO> getComment() {
+		return comment;
+	}
+
+	public void setComment(Set<CommentDTO> comment) {
+		this.comment = comment;
 	}
 	
 	@Override
