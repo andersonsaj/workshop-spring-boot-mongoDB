@@ -1,7 +1,7 @@
 package com.example.workshopmongo.domain;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,20 +17,20 @@ public class Post implements Serializable{
 	
 	@Id
 	private String id;
-	private Instant moment;
+	private Date date;
 	private String title;
 	private String body;
 	private AuthorDTO author;
 	
-	private Set<CommentDTO> comment = new HashSet<>();
+	private Set<CommentDTO> comments = new HashSet<>();
 	
 	public Post() {
 	}
 
-	public Post(String id, Instant moment, String title, String body, AuthorDTO author) {
+	public Post(String id, Date moment, String title, String body, AuthorDTO author) {
 		super();
 		this.id = id;
-		this.moment = moment;
+		this.date = moment;
 		this.title = title;
 		this.body = body;
 		this.author = author;
@@ -44,12 +44,12 @@ public class Post implements Serializable{
 		this.id = id;
 	}
 	
-	public Instant getMoment() {
-		return moment;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setMoment(Instant moment) {
-		this.moment = moment;
+	public void setDate(Date moment) {
+		this.date = moment;
 	}
 
 	public String getTitle() {
@@ -77,11 +77,11 @@ public class Post implements Serializable{
 	}
 
 	public Set<CommentDTO> getComment() {
-		return comment;
+		return comments;
 	}
 
 	public void setComment(Set<CommentDTO> comment) {
-		this.comment = comment;
+		this.comments = comment;
 	}
 	
 	@Override
